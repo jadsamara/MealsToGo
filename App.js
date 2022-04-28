@@ -2,10 +2,11 @@ import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import { ThemeProvider } from "styled-components";
 
 import {
+  useFonts as useLato,
   useFonts as useOswald,
   Oswald_400Regular,
-} from "expo-google-fonts/oswald";
-import { useFonts as useLato, Lato_400Regular } from "expo-google-fonts/lato";
+  Lato_400Regular,
+} from "@expo-google-fonts/dev";
 
 import { theme } from "./src/infrastructure/theme";
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
