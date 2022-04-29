@@ -1,9 +1,11 @@
-import { View, Image } from "react-native";
-import { Card } from "react-native-paper";
+import { Image, View } from "react-native";
 import styled from "styled-components";
+
+import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
 import { Spacer } from "../../../components/spacer/spacer.components";
 import { Text } from "../../../components/typography/text.components";
+
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
 
@@ -26,7 +28,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     <RestaurantCard elevation={5}>
       <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
       <CardInfo>
-        <Text>{name}</Text>
+        <Text variant="label">{name}</Text>
         <Section>
           <Rating>
             {ratingArray.map(() => (
@@ -34,16 +36,12 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
             ))}
           </Rating>
           <SectionEnd>
-            {isClosedTemp && (
-              <Text variant="label" style={{ color: "red" }}>
-                Closed
-              </Text>
-            )}
+            {isClosedTemp && <Text variant="error">CLOSED TEMPORARILY</Text>}
             <Spacer position="left" size="large">
               {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
             </Spacer>
             <Spacer position="left" size="large">
-              <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+              <Icon source={{ uri: icon }} />
             </Spacer>
           </SectionEnd>
         </Section>
@@ -53,12 +51,17 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
   );
 };
 
+const Icon = styled(Image)`
+  width: 15px;
+  height: 15px;
+`;
+
 const RestaurantCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
 const RestaurantCardCover = styled(Card.Cover)`
-  padding: ${(props) => props.theme.space[2]};
+  padding: ${(props) => props.theme.space[1]};
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
