@@ -19,7 +19,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     address = "123 Sesame Street",
     isOpenNow = true,
     rating = 4,
-    isClosedTemp = true,
+    isClosedTemp = false,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.ceil(rating)));

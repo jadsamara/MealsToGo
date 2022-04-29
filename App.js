@@ -4,6 +4,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { SafeArea } from "./src/utils/safe-area.components";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
+import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
+import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 
 import {
   useFonts as useLato,
@@ -13,7 +15,8 @@ import {
 } from "@expo-google-fonts/dev";
 
 import { theme } from "./src/infrastructure/theme";
-import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
+
+const Tab = createBottomTabNavigator();
 
 function SettingsScreen() {
   return (
@@ -38,8 +41,6 @@ function Map() {
 function Restaurants() {
   return <RestaurantsScreen />;
 }
-
-const Tab = createBottomTabNavigator();
 
 const TAB_ICON = {
   Restaurants: "md-restaurant",
@@ -69,19 +70,21 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <NavigationContainer>
-        <Tab.Navigator
-          screenOptions={screenOptions}
-          tabBarOptions={{
-            activeTintColor: "tomato",
-            inactiveTintColor: "gray",
-          }}
-        >
-          <Tab.Screen name="Restaurants" component={Restaurants} />
-          <Tab.Screen name="Map" component={Map} />
-          <Tab.Screen name="Settings" component={SettingsScreen} />
-        </Tab.Navigator>
-      </NavigationContainer>
+      <RestaurantsContextProvider>
+        <NavigationContainer>
+          <Tab.Navigator
+            screenOptions={screenOptions}
+            tabBarOptions={{
+              activeTintColor: "tomato",
+              inactiveTintColor: "gray",
+            }}
+          >
+            <Tab.Screen name="Restaurants" component={Restaurants} />
+            <Tab.Screen name="Map" component={Map} />
+            <Tab.Screen name="Settings" component={SettingsScreen} />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </RestaurantsContextProvider>
     </ThemeProvider>
   );
 }
