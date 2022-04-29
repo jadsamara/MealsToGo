@@ -1,8 +1,9 @@
-import { FlatList, View, SafeAreaView, StatusBar } from "react-native";
+import { FlatList, View } from "react-native";
 import { Searchbar } from "react-native-paper";
 import { RestaurantInfoCard } from "../components/restaurants-info-card.components";
 import styled from "styled-components";
 import { Spacer } from "../../../components/spacer/spacer.components";
+import { SafeArea } from "../../../utils/safe-area.components";
 
 export const RestaurantsScreen = () => (
   <SafeArea>
@@ -30,11 +31,6 @@ export const RestaurantsScreen = () => (
     </ListRestaurantsContainer>
   </SafeArea>
 );
-
-const SafeArea = styled(SafeAreaView)`
-  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
-  flex: 1;
-`;
 
 const SearchRestaurantsContainer = styled(View)`
   margin: ${(props) => props.theme.space[3]};

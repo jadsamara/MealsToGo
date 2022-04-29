@@ -1,5 +1,9 @@
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { Text, View, SafeAreaView } from "react-native";
 import { ThemeProvider } from "styled-components";
+import { NavigationContainer } from "@react-navigation/native";
+import { SafeArea } from "./src/utils/safe-area.components";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
 
 import {
   useFonts as useLato,
@@ -10,6 +14,47 @@ import {
 
 import { theme } from "./src/infrastructure/theme";
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
+
+function SettingsScreen() {
+  return (
+    <SafeArea>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text>Settings!</Text>
+      </View>
+    </SafeArea>
+  );
+}
+
+function Map() {
+  return (
+    <SafeArea>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text>Map!</Text>
+      </View>
+    </SafeArea>
+  );
+}
+
+function Restaurants() {
+  return <RestaurantsScreen />;
+}
+
+const Tab = createBottomTabNavigator();
+
+const TAB_ICON = {
+  Restaurants: "md-restaurant",
+  Map: "md-map",
+  Settings: "md-settings",
+};
+
+const screenOptions = ({ route }) => {
+  const iconName = TAB_ICON[route.name];
+  return {
+    tabBarIcon: ({ size, color }) => (
+      <Ionicons name={iconName} size={size} color={color} />
+    ),
+  };
+};
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -23,12 +68,20 @@ export default function App() {
   if (!oswaldLoaded || !latoLoaded) return null;
 
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <RestaurantsScreen />
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={theme}>
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={screenOptions}
+          tabBarOptions={{
+            activeTintColor: "tomato",
+            inactiveTintColor: "gray",
+          }}
+        >
+          <Tab.Screen name="Restaurants" component={Restaurants} />
+          <Tab.Screen name="Map" component={Map} />
+          <Tab.Screen name="Settings" component={SettingsScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({});
