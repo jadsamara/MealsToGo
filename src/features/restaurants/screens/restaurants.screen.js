@@ -33,10 +33,11 @@ export const RestaurantsScreen = () => (
 
 const SafeArea = styled(SafeAreaView)`
   ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
+  flex: 1;
 `;
 
 const SearchRestaurantsContainer = styled(View)`
-  margin: ${(props) => props.theme.space[2]};
+  margin: ${(props) => props.theme.space[3]};
 `;
 
 const ListRestaurantsContainer = styled(View)`
@@ -46,6 +47,6 @@ const ListRestaurantsContainer = styled(View)`
 
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
-    padding: 20,
+    padding: 17,
   },
 })``;

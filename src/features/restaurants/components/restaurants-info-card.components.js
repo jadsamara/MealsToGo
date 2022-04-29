@@ -1,6 +1,8 @@
 import { Image, View } from "react-native";
 import styled from "styled-components";
 
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
 import { Spacer } from "../../../components/spacer/spacer.components";
