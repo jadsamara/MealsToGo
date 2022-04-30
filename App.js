@@ -1,12 +1,12 @@
 import { Text, View, SafeAreaView } from "react-native";
 import { ThemeProvider } from "styled-components";
 import { NavigationContainer } from "@react-navigation/native";
-import { SafeArea } from "./src/utils/safe-area.components";
+import { SafeArea } from "./src/utils/safe-area.component";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
-
+import { LocationContextProvider } from "./src/services/restaurants/location/location.context";
 import {
   useFonts as useLato,
   useFonts as useOswald,
@@ -70,21 +70,23 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <RestaurantsContextProvider>
-        <NavigationContainer>
-          <Tab.Navigator
-            screenOptions={screenOptions}
-            tabBarOptions={{
-              activeTintColor: "tomato",
-              inactiveTintColor: "gray",
-            }}
-          >
-            <Tab.Screen name="Restaurants" component={Restaurants} />
-            <Tab.Screen name="Map" component={Map} />
-            <Tab.Screen name="Settings" component={SettingsScreen} />
-          </Tab.Navigator>
-        </NavigationContainer>
-      </RestaurantsContextProvider>
+      <LocationContextProvider>
+        <RestaurantsContextProvider>
+          <NavigationContainer>
+            <Tab.Navigator
+              screenOptions={screenOptions}
+              tabBarOptions={{
+                activeTintColor: "tomato",
+                inactiveTintColor: "gray",
+              }}
+            >
+              <Tab.Screen name="Restaurants" component={Restaurants} />
+              <Tab.Screen name="Map" component={Map} />
+              <Tab.Screen name="Settings" component={SettingsScreen} />
+            </Tab.Navigator>
+          </NavigationContainer>
+        </RestaurantsContextProvider>
+      </LocationContextProvider>
     </ThemeProvider>
   );
 }
