@@ -3,8 +3,7 @@ import styled from "styled-components";
 
 import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
-import { Spacer } from "../../../components/spacer/spacer.components";
-import { Text } from "../../../components/typography/text.components";
+import { Text } from "../../../infrastructure/theme/typography/text.components";
 
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
@@ -42,9 +41,9 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
             <OpenNowSign>
               {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
             </OpenNowSign>
-            <Spacer position="left" size="large">
+            <TypeOfFoodIcon>
               <Icon source={{ uri: icon }} />
-            </Spacer>
+            </TypeOfFoodIcon>
           </SectionEnd>
         </Section>
         <Address>{address}</Address>
@@ -60,6 +59,7 @@ const Icon = styled(Image)`
 
 const RestaurantCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
+  margin-bottom: ${(props) => props.theme.space[4]};
 `;
 
 const RestaurantCardCover = styled(Card.Cover)`
@@ -96,4 +96,8 @@ const SectionEnd = styled(View)`
 
 const OpenNowSign = styled(View)`
   margin-left: ${(props) => props.theme.space[1]};
+`;
+
+const TypeOfFoodIcon = styled(View)`
+  margin-left: ${(props) => props.theme.space[3]};
 `;
