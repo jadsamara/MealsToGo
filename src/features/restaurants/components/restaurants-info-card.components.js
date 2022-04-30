@@ -19,7 +19,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     address = "123 Sesame Street",
     isOpenNow = true,
     rating = 4,
-    isClosedTemp = false,
+    isClosedTemporarily = true,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.ceil(rating)));
@@ -36,10 +36,12 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
             ))}
           </Rating>
           <SectionEnd>
-            {isClosedTemp && <Text variant="error">CLOSED TEMPORARILY</Text>}
-            <Spacer position="left" size="large">
+            {isClosedTemporarily && (
+              <Text variant="error">CLOSED TEMPORARILY</Text>
+            )}
+            <OpenNowSign>
               {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
-            </Spacer>
+            </OpenNowSign>
             <Spacer position="left" size="large">
               <Icon source={{ uri: icon }} />
             </Spacer>
@@ -90,4 +92,8 @@ const SectionEnd = styled(View)`
   flex-direction: row;
   justify-content: flex-end;
   flex: 1;
+`;
+
+const OpenNowSign = styled(View)`
+  margin-left: ${(props) => props.theme.space[1]};
 `;

@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect, useMemo } from "react";
+import { useState, createContext, useEffect, useMemo } from "react";
 
 import {
   restaurantsRequest,
@@ -22,11 +22,12 @@ export const RestaurantsContextProvider = ({ children }) => {
           setRestaurants(results);
         })
         .catch((err) => {
-          setIsLoading(false);
+          setIsLoading(true);
           setError(err);
         });
     }, 2000);
   };
+
   useEffect(() => {
     retrieveRestaurants();
   }, []);
