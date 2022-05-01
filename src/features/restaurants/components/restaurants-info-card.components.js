@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
-import { Text } from "../../../infrastructure/theme/typography/text.components";
+import { Text } from "../../../infrastructure/theme/typography/text.component";
 
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
