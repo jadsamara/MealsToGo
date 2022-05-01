@@ -54,6 +54,14 @@ const screenOptions = ({ route }) => {
     tabBarIcon: ({ size, color }) => (
       <Ionicons name={iconName} size={size} color={color} />
     ),
+    tabBarActiveTintColor: "tomato",
+    tabBarInactiveTintColor: "gray",
+    tabBarStyle: [
+      {
+        display: "flex",
+      },
+      null,
+    ],
   };
 };
 
@@ -73,13 +81,7 @@ export default function App() {
       <LocationContextProvider>
         <RestaurantsContextProvider>
           <NavigationContainer>
-            <Tab.Navigator
-              screenOptions={screenOptions}
-              tabBarOptions={{
-                activeTintColor: "tomato",
-                inactiveTintColor: "gray",
-              }}
-            >
+            <Tab.Navigator screenOptions={screenOptions}>
               <Tab.Screen name="Restaurants" component={Restaurants} />
               <Tab.Screen name="Map" component={Map} />
               <Tab.Screen name="Settings" component={SettingsScreen} />

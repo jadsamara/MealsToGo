@@ -19,6 +19,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     isOpenNow = true,
     rating = 4,
     isClosedTemporarily = true,
+    placeId,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.ceil(rating)));
@@ -30,8 +31,13 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
         <Text variant="label">{name}</Text>
         <Section>
           <Rating>
-            {ratingArray.map(() => (
-              <SvgXml xml={star} width={20} height={20} />
+            {ratingArray.map((_, i) => (
+              <SvgXml
+                xml={star}
+                width={20}
+                height={20}
+                key={`star-${placeId}-${i}`}
+              />
             ))}
           </Rating>
           <SectionEnd>
@@ -95,9 +101,10 @@ const SectionEnd = styled(View)`
 `;
 
 const OpenNowSign = styled(View)`
-  margin-left: ${(props) => props.theme.space[1]};
+  margin-left: ${(props) => props.theme.space[3]};
 `;
 
 const TypeOfFoodIcon = styled(View)`
-  margin-left: ${(props) => props.theme.space[3]};
+  margin-left: ${(props) => props.theme.space[2]};
+  margin-top: ${(props) => props.theme.space[1]};
 `;
