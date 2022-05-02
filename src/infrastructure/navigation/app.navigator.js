@@ -28,10 +28,6 @@ function Map() {
   );
 }
 
-function Restaurants() {
-  return <RestaurantsScreen />;
-}
-
 const TAB_ICON = {
   Restaurants: "md-restaurant",
   Map: "md-map",
@@ -55,7 +51,7 @@ const screenOptions = ({ route }) => {
   };
 };
 
-const AppNavigator = () => {
+export const AppNavigator = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={screenOptions}>
@@ -66,5 +62,3 @@ const AppNavigator = () => {
     </NavigationContainer>
   );
 };
-
-export default AppNavigator;
