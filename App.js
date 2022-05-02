@@ -2,7 +2,6 @@ import { ThemeProvider } from "styled-components";
 import { AppNavigator } from "./src/infrastructure/navigation/app.navigator";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/restaurants/location/location.context";
-import { StatusBar } from "expo-status-bar";
 import {
   useFonts as useLato,
   useFonts as useOswald,

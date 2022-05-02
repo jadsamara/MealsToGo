@@ -2,11 +2,16 @@ import { NavigationContainer } from "@react-navigation/native";
 import { Text, View, SafeAreaView } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import { RestaurantsScreen } from "../../features/restaurants/screens/restaurants.screen";
 import { SafeArea } from "../../utils/safe-area.component";
 import { RestaurantsNavigator } from "./restaurants.navigator";
 
 const Tab = createBottomTabNavigator();
+
+const TAB_ICON = {
+  Restaurants: "md-restaurant",
+  Map: "md-map",
+  Settings: "md-settings",
+};
 
 function SettingsScreen() {
   return (
@@ -28,13 +33,7 @@ function Map() {
   );
 }
 
-const TAB_ICON = {
-  Restaurants: "md-restaurant",
-  Map: "md-map",
-  Settings: "md-settings",
-};
-
-const screenOptions = ({ route }) => {
+const createScreenOptions = ({ route }) => {
   const iconName = TAB_ICON[route.name];
   return {
     tabBarIcon: ({ size, color }) => (
@@ -48,13 +47,14 @@ const screenOptions = ({ route }) => {
       },
       null,
     ],
+    headerShown: false,
   };
 };
 
 export const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={screenOptions}>
+      <Tab.Navigator screenOptions={createScreenOptions}>
         <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
         <Tab.Screen name="Map" component={Map} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
