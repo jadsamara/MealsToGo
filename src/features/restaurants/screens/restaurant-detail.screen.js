@@ -2,6 +2,7 @@ import { SafeArea } from "../../../utils/safe-area.component";
 import { RestaurantInfoCard } from "../components/restaurants-info-card.components";
 import { List } from "react-native-paper";
 import { useState } from "react";
+import { ScrollView } from "react-native";
 import styled from "styled-components";
 
 export const RestaurantDetailScreen = ({ route }) => {
@@ -19,43 +20,45 @@ export const RestaurantDetailScreen = ({ route }) => {
   return (
     <SafeArea>
       <RestaurantInfoCard restaurant={restaurant} />
-      <Breakfast
-        title="Breakfast"
-        left={(props) => <List.Icon {...props} icon="bread-slice" />}
-        expanded={breakfastExpanded}
-        onPress={breakfastPress}
-      >
-        <List.Item title="Donut" />
-        <List.Item title="Muffin" />
-      </Breakfast>
-      <Lunch
-        title="Lunch"
-        left={(props) => <List.Icon {...props} icon="hamburger" />}
-        expanded={lunchExpanded}
-        onPress={lunchPress}
-      >
-        <List.Item title="Burger" />
-        <List.Item title="Fries" />
-        <List.Item title="Pizza" />
-      </Lunch>
-      <Drinks
-        title="Drinks"
-        left={(props) => <List.Icon {...props} icon="cup" />}
-        expanded={drinksExpanded}
-        onPress={drinksPress}
-      >
-        <List.Item title="Sprite" />
-        <List.Item title="Nestea" />
-      </Drinks>
-      <Dinner
-        title="Dinner"
-        left={(props) => <List.Icon {...props} icon="food-variant" />}
-        expanded={dinnerExpanded}
-        onPress={dinnerPress}
-      >
-        <List.Item title="Steak" />
-        <List.Item title="Fish" />
-      </Dinner>
+      <ScrollView>
+        <Breakfast
+          title="Breakfast"
+          left={(props) => <List.Icon {...props} icon="bread-slice" />}
+          expanded={breakfastExpanded}
+          onPress={breakfastPress}
+        >
+          <List.Item title="Donut" />
+          <List.Item title="Muffin" />
+        </Breakfast>
+        <Lunch
+          title="Lunch"
+          left={(props) => <List.Icon {...props} icon="hamburger" />}
+          expanded={lunchExpanded}
+          onPress={lunchPress}
+        >
+          <List.Item title="Burger" />
+          <List.Item title="Fries" />
+          <List.Item title="Pizza" />
+        </Lunch>
+        <Drinks
+          title="Drinks"
+          left={(props) => <List.Icon {...props} icon="cup" />}
+          expanded={drinksExpanded}
+          onPress={drinksPress}
+        >
+          <List.Item title="Sprite" />
+          <List.Item title="Nestea" />
+        </Drinks>
+        <Dinner
+          title="Dinner"
+          left={(props) => <List.Icon {...props} icon="food-variant" />}
+          expanded={dinnerExpanded}
+          onPress={dinnerPress}
+        >
+          <List.Item title="Steak" />
+          <List.Item title="Fish" />
+        </Dinner>
+      </ScrollView>
     </SafeArea>
   );
 };

@@ -4,14 +4,13 @@ import {
 } from "@react-navigation/stack";
 import { RestaurantsScreen } from "../../features/restaurants/screens/restaurants.screen";
 import { RestaurantDetailScreen } from "../../features/restaurants/screens/restaurant-detail.screen";
-import styled from "styled-components";
 const RestaurantStack = createStackNavigator();
 
 const createScreenOptions = () => {
   return {
     headerShown: false,
-
     ...TransitionPresets.ModalSlideFromBottomIOS,
+    gestureResponseDistance: 150,
   };
 };
 
