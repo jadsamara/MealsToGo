@@ -9,6 +9,7 @@ import { Search } from "../components/search.component";
 
 export const RestaurantsScreen = ({ navigation }) => {
   const { restaurants, isLoading } = useContext(RestaurantsContext);
+
   return (
     <SafeArea>
       <Search />
