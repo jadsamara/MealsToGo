@@ -1,4 +1,4 @@
-import { SafeArea } from "../../../utils/safe-area.component";
+import { SafeArea } from "../../../components/utils/safe-area.component";
 import { RestaurantInfoCard } from "../components/restaurants-info-card.components";
 import { List } from "react-native-paper";
 import { useState } from "react";

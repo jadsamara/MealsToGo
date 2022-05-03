@@ -1,12 +1,13 @@
 import { useContext, useState, useEffect } from "react";
+import { TouchableOpacity } from "react-native";
 import MapView from "react-native-maps";
 import styled from "styled-components";
-import { LocationContext } from "../../../services/restaurants/location/location.context";
+import { LocationContext } from "../../../services/location/location.context";
 import { MapSearch } from "../components/search.component";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { MapCallout } from "../components/map-callout.component";
 
-export const MapScreen = () => {
+export const MapScreen = ({ navigation }) => {
   const { location } = useContext(LocationContext);
   const { restaurants = [] } = useContext(RestaurantsContext);
 
@@ -43,7 +44,15 @@ export const MapScreen = () => {
               }}
             >
               <MapView.Callout>
-                <MapCallout restaurant={restaurant} />
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate("RestaurantDetail", {
+                      restaurant: restaurant,
+                    })
+                  }
+                >
+                  <MapCallout restaurant={restaurant} />
+                </TouchableOpacity>
               </MapView.Callout>
             </MapView.Marker>
           );

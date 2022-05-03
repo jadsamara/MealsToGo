@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { ActivityIndicator } from "react-native-paper";
 import { RestaurantInfoCard } from "../components/restaurants-info-card.components";
 import styled from "styled-components";
-import { SafeArea } from "../../../utils/safe-area.component";
+import { SafeArea } from "../../../components/utils/safe-area.component";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { Search } from "../components/search.component";
 

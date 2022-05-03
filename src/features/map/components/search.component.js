@@ -2,7 +2,7 @@ import { Searchbar } from "react-native-paper";
 import { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 
-import { LocationContext } from "../../../services/restaurants/location/location.context";
+import { LocationContext } from "../../../services/location/location.context";
 
 export const MapSearch = () => {
   const { keyword, search } = useContext(LocationContext);
