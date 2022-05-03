@@ -9,7 +9,7 @@ import {
   Lato_400Regular,
 } from "@expo-google-fonts/dev";
 
-import { theme } from "./src/infrastructure/theme";
+import { theme } from "./src/components/theme";
 
 export default function App() {
   const [oswaldLoaded] = useOswald({

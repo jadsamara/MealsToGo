@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { LocationContext } from "../../../services/restaurants/location/location.context";
 import { MapSearch } from "../components/search.component";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { MapCallout } from "../components/map-callout.component";
 
 export const MapScreen = () => {
   const { location } = useContext(LocationContext);
@@ -33,14 +34,18 @@ export const MapScreen = () => {
       >
         {restaurants.map((restaurant) => {
           return (
-            <MapView.marker
+            <MapView.Marker
               key={restaurant.name}
               title={restaurant.name}
               coordinate={{
                 latitude: restaurant.geometry.location.lat,
                 longitude: restaurant.geometry.location.lng,
               }}
-            />
+            >
+              <MapView.Callout>
+                <MapCallout restaurant={restaurant} />
+              </MapView.Callout>
+            </MapView.Marker>
           );
         })}
       </Map>
