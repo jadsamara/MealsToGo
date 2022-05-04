@@ -7,7 +7,7 @@ import { Text } from "../../../components/theme/text.component";
 
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
-import { FavouriteIcon } from "../../../components/favourites/favourite.component";
+import { Favourite } from "../../../components/favourites/favourite.component";
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
@@ -21,14 +21,13 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     rating = 4,
     isClosedTemporarily = true,
     placeId,
-    isFavourite = false,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.ceil(rating)));
 
   return (
     <RestaurantCard elevation={5}>
-      <FavouriteIcon />
+      <Favourite restaurant={restaurant} />
       <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
       <CardInfo>
         <Text variant="label">{name}</Text>

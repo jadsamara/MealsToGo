@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import { LocationContext } from "../../../services/location/location.context";
 
-export const Search = () => {
+export const Search = ({ isFavouriteToggled, onFavouritesToggle }) => {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyword, setSearchKeyword] = useState(keyword);
 
@@ -15,6 +15,8 @@ export const Search = () => {
   return (
     <SearchRestaurantsContainer>
       <Searchbar
+        icon={isFavouriteToggled ? "heart" : "heart-outline"}
+        onIconPress={onFavouritesToggle}
         placeholder="Restaurants near"
         value={searchKeyword}
         onSubmitEditing={() => {
