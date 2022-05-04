@@ -31,7 +31,7 @@ export const RestaurantsScreen = ({ navigation }) => {
             {isToggled && (
               <FavouritesList
                 favourites={favourites}
-                goToDetail={navigation.navigate("RestaurantDetail")}
+                goToDetail={navigation.navigate}
               />
             )}
             <RestaurantList

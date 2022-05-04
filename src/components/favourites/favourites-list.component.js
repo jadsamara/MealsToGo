@@ -1,21 +1,26 @@
 import { ScrollView, TouchableOpacity } from "react-native";
 import styled from "styled-components";
 import { CompactRestaurantInfo } from "../restaurant/compact-restaurant-info.component";
+import { Text } from "react-native";
 
 export const FavouritesList = ({ favourites, goToDetail }) => {
+  if (!favourites.length)
+    return <NoFavourites>No Favourites Added!</NoFavourites>;
+
   return (
     <FavouritesWrapper>
+      <FavouritesTitle>Favourites</FavouritesTitle>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {favourites.map((restaurant) => {
           const key = restaurant.name;
           return (
-            <Temp key={key}>
+            <FavouritesContainer key={key}>
               <TouchableOpacity
                 onPress={() => goToDetail("RestaurantDetail", { restaurant })}
               >
                 <CompactRestaurantInfo restaurant={restaurant} />
               </TouchableOpacity>
-            </Temp>
+            </FavouritesContainer>
           );
         })}
       </ScrollView>
@@ -27,6 +32,15 @@ const FavouritesWrapper = styled.View`
   padding: 10px;
 `;
 
-const Temp = styled.View`
+const FavouritesContainer = styled.View`
   margin-right: 16px;
+`;
+
+const FavouritesTitle = styled.Text`
+  font-family: ${(props) => props.theme.fonts.body};
+`;
+
+const NoFavourites = styled.Text`
+  font-family: ${(props) => props.theme.fonts.body};
+  margin-left: 16px;
 `;
